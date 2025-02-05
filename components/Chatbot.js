@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { Send } from "lucide-react"; // Send button icon
+import { Send } from "lucide-react";
 
 export default function Chatbot() {
   const [messages, setMessages] = useState([]);
@@ -49,7 +49,7 @@ export default function Chatbot() {
     <div className="h-screen w-screen flex justify-center items-center bg-cover bg-center bg-no-repeat relative"
          style={{ 
            backgroundImage: "url('/images/background.png')", 
-           fontFamily: "'Helvetica', Arial, sans-serif" // Ensure Helvetica is applied
+           fontFamily: "'Helvetica', Arial, sans-serif"
          }}>
       
       {/* Chatbox Container */}
@@ -77,10 +77,10 @@ export default function Chatbot() {
               {/* Chat Bubble */}
               <div className="p-3 text-white text-lg rounded-xl max-w-xs break-words shadow-lg"
                    style={{
-                     backgroundColor: msg.sender === "user" ? "#00aaff" : "#ff1493", // Blue for user, Pink for bot
+                     backgroundColor: msg.sender === "user" ? "#00aaff" : "#ff1493", 
                      fontWeight: "bold",
                      textAlign: msg.sender === "user" ? "right" : "left",
-                     fontFamily: "'Helvetica', Arial, sans-serif", // Explicit Helvetica font
+                     fontFamily: "'Helvetica', Arial, sans-serif", 
                    }}>
                 {msg.text}
               </div>
@@ -96,7 +96,7 @@ export default function Chatbot() {
                  onChange={(e) => setInput(e.target.value)}
                  onKeyDown={handleKeyPress}
                  placeholder="Ask MARU anything..."
-                 style={{ fontFamily: "'Helvetica', Arial, sans-serif" }} // Ensure Input uses Helvetica
+                 style={{ fontFamily: "'Helvetica', Arial, sans-serif" }}
           />
           <button className="p-3 bg-neonBlue rounded-full flex items-center justify-center transition-all hover:scale-110 transform"
                   onClick={sendMessage}>
