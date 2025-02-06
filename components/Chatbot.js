@@ -86,7 +86,7 @@ export default function Chatbot() {
   }
 
   return (
-    <div className="h-screen w-full flex items-center justify-center bg-cover bg-center px-4"
+    <div className="h-screen w-full flex flex-col items-center justify-center bg-cover bg-center px-4"
       style={{
         backgroundImage: "url('/images/background.png')",
         backgroundSize: "cover",
@@ -94,13 +94,24 @@ export default function Chatbot() {
         backgroundAttachment: "fixed",
       }}>
 
-      {/* Chatbox Container: Wider min-width on Desktop, Responsive on Mobile */}
-      <div className="relative w-full min-w-[90vw] md:min-w-[75vw] lg:min-w-[900px] max-w-[95vw] md:max-w-[90vw] lg:max-w-[1400px] h-[90vh] bg-gray-900 bg-opacity-90 rounded-lg overflow-hidden border-4 border-neonBlue shadow-2xl flex flex-col">
-        
-        <h1 className="text-3xl font-bold text-neonBlue text-center p-4">
-          MARUxAI
-        </h1>
+      {/* Navigation Menu */}
+      <div className="absolute top-4 w-full flex justify-between px-6 md:px-12">
+        <h1 className="text-3xl font-bold text-neonBlue">MARUxAI</h1>
+        <div className="flex gap-4">
+          <a href="https://x.com/maruxai_sol" target="_blank" rel="noopener noreferrer"
+            className="px-4 py-2 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-400 transition">
+            X
+          </a>
+          <a href="https://maruxai.xyz/" target="_blank" rel="noopener noreferrer"
+            className="px-4 py-2 bg-gray-800 text-white rounded-lg font-semibold hover:bg-gray-700 transition">
+            Home
+          </a>
+        </div>
+      </div>
 
+      {/* Chatbox Container */}
+      <div className="relative w-full min-w-[90vw] md:min-w-[75vw] lg:min-w-[900px] max-w-[95vw] md:max-w-[90vw] lg:max-w-[1400px] h-[90vh] bg-gray-900 bg-opacity-90 rounded-lg overflow-hidden border-4 border-neonBlue shadow-2xl flex flex-col mt-16">
+        
         {/* Chat Messages */}
         <div className="flex-1 overflow-y-auto space-y-4 p-4">
           {messages.map((msg, index) => (
