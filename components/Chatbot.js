@@ -9,7 +9,7 @@ export default function Chatbot() {
   const [isMounted, setIsMounted] = useState(false);
   const [loading, setLoading] = useState(false);
   const chatEndRef = useRef(null);
-  const inputRef = useRef(null); // Reference to the input field
+  const inputRef = useRef(null);
 
   const sendMessage = async () => {
     if (!input.trim()) {
@@ -20,7 +20,7 @@ export default function Chatbot() {
 
     const userMessage = { sender: "user", text: input };
     setMessages((prevMessages) => [...prevMessages, userMessage]);
-    setInput(""); 
+    setInput("");
     setLoading(true);
 
     try {
@@ -50,12 +50,11 @@ export default function Chatbot() {
       setLoading(false);
     }
 
-    // Keep the input field focused after message send
     setTimeout(() => {
       if (inputRef.current) {
         inputRef.current.focus();
       }
-    }, 100); // Timeout ensures focus is applied after re-render
+    }, 100);
   };
 
   const handleKeyPress = (e) => {
@@ -68,7 +67,7 @@ export default function Chatbot() {
   useEffect(() => {
     setIsMounted(true);
     if (inputRef.current) {
-      inputRef.current.focus(); // Set focus on input field when component mounts
+      inputRef.current.focus();
     }
   }, []);
 
@@ -76,7 +75,6 @@ export default function Chatbot() {
     if (isMounted) {
       chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
 
-      // Keep focus on input field after every new message
       if (inputRef.current) {
         inputRef.current.focus();
       }
@@ -88,7 +86,7 @@ export default function Chatbot() {
   }
 
   return (
-    <div className="h-screen w-full flex items-center justify-center bg-cover bg-center"
+    <div className="h-screen w-full flex items-center justify-center bg-cover bg-center px-4"
       style={{
         backgroundImage: "url('/images/background.png')",
         backgroundSize: "cover",
@@ -96,27 +94,27 @@ export default function Chatbot() {
         backgroundAttachment: "fixed",
       }}>
 
-      {/* Fixed-width chat container */}
-      <div className="relative w-[1200px] h-[600px] bg-gray-900 bg-opacity-90 rounded-lg overflow-hidden border-4 border-neonBlue shadow-2xl flex flex-col">
+      {/* Chatbox Container: Wider min-width on Desktop, Responsive on Mobile */}
+      <div className="relative w-full min-w-[90vw] md:min-w-[75vw] lg:min-w-[900px] max-w-[95vw] md:max-w-[90vw] lg:max-w-[1400px] h-[90vh] bg-gray-900 bg-opacity-90 rounded-lg overflow-hidden border-4 border-neonBlue shadow-2xl flex flex-col">
         
         <h1 className="text-3xl font-bold text-neonBlue text-center p-4">
           MARUxAI
         </h1>
 
         {/* Chat Messages */}
-        <div className="flex-1 overflow-y-auto space-y-4 p-6">
+        <div className="flex-1 overflow-y-auto space-y-4 p-4">
           {messages.map((msg, index) => (
             <div key={index} className={`flex items-start w-full ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
               {msg.sender === "user" ? (
                 <img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg"
-                  alt="User Avatar" className="w-10 h-10 rounded-full border border-cyan-300 shadow-md" />
+                  alt="User Avatar" className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-cyan-300 shadow-md" />
               ) : (
                 <img src="https://i.imgur.com/GSzvJM8.png"
-                  alt="MARU Avatar" className="w-10 h-10 rounded-full border border-pink-400 shadow-md" />
+                  alt="MARU Avatar" className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-pink-400 shadow-md" />
               )}
 
-              <div className={`p-3 text-white text-lg rounded-xl break-words shadow-lg fade-in ml-2
-                max-w-[75%] md:max-w-[60%] lg:max-w-[50%]`}
+              <div className={`p-3 text-white text-sm md:text-lg rounded-xl break-words shadow-lg fade-in ml-2
+                max-w-[80%] md:max-w-[70%] lg:max-w-[60%]`}
                 style={{
                   backgroundColor: msg.sender === "user" ? "#00aaff" : "#ff1493",
                   fontWeight: "bold",
@@ -131,8 +129,8 @@ export default function Chatbot() {
           {loading && (
             <div className="flex items-center">
               <img src="https://i.imgur.com/GSzvJM8.png"
-                alt="MARU Avatar" className="w-10 h-10 rounded-full border border-pink-400 shadow-md" />
-              <div className="p-3 text-white text-lg rounded-xl bg-pink-500 ml-2">
+                alt="MARU Avatar" className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-pink-400 shadow-md" />
+              <div className="p-3 text-white text-sm md:text-lg rounded-xl bg-pink-500 ml-2">
                 Meow... <span className="dots">.</span>
               </div>
             </div>
@@ -142,20 +140,20 @@ export default function Chatbot() {
         </div>
 
         {/* Input Box & Send Button */}
-        <div className="flex gap-4 p-4 bg-gray-900 w-full">
+        <div className="flex gap-2 p-4 bg-gray-900 w-full">
           <input
-            ref={inputRef} // Attach reference to input field
-            className={`p-4 bg-gray-800 text-white border border-neonBlue rounded-lg w-full outline-none focus:ring-2 focus:ring-neonBlue text-lg ${inputShake ? 'shake' : ''}`}
+            ref={inputRef}
+            className={`p-3 bg-gray-800 text-white border border-neonBlue rounded-lg w-full outline-none focus:ring-2 focus:ring-neonBlue text-sm md:text-lg ${inputShake ? 'shake' : ''}`}
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyPress}
             placeholder="Ask MARU anything..."
             disabled={loading}
           />
-          <button className={`p-4 bg-neonBlue rounded-full flex items-center justify-center transition-all ${loading ? "opacity-50 cursor-not-allowed" : "hover:scale-110 transform"}`}
+          <button className={`p-3 bg-neonBlue rounded-full flex items-center justify-center transition-all ${loading ? "opacity-50 cursor-not-allowed" : "hover:scale-110 transform"}`}
             onClick={sendMessage}
             disabled={loading}>
-            <Send size={32} color="#121212" />
+            <Send size={28} color="#121212" />
           </button>
         </div>
       </div>
