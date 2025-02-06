@@ -120,7 +120,7 @@ export default function Chatbot() {
                 <img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg"
                   alt="User Avatar" className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-cyan-300 shadow-md" />
               ) : (
-                <img src="https://i.imgur.com/GSzvJM8.png"
+                <img src="https://i.imgur.com/aFGm2NG.jpeg"
                   alt="MARU Avatar" className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-pink-400 shadow-md" />
               )}
 
