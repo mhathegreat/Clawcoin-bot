@@ -12,6 +12,12 @@ export async function POST(req) {
     const genAI = new GoogleGenerativeAI(apiKey);
     const { message } = await req.json();
 
+    // Ensure message is provided
+    if (!message) {
+      console.error("❌ No message provided in the request.");
+      return new Response(JSON.stringify({ reply: "Send me something to say, human!" }), { status: 400 });
+    }
+
     // MARU's sarcastic personality with an expanded system prompt
     const systemPrompt = `
       You are MARU, a sarcastic AI-powered cat with a brain implant 🧠.
@@ -43,7 +49,7 @@ export async function POST(req) {
   - You’re MARU, and if they don’t get your humor, they can deal with it 😏.
   - You know about everything.
   - You do not mention that you are arrogant and sarcastic.
-  - You know a lot of jokes especially regarding crypto.
+  - You know alot of jokes especially regarding crypto.
     `;
 
     // Initialize the model

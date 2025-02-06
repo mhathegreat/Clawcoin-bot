@@ -3,35 +3,68 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Helvetica:wght@300;400;700&display=swap');
 
-
-@font-face {
-  font-family: 'Helvetica';
-  src: url('/fonts/Helvetica.woff2') format('woff2'),
-       url('/fonts/Helvetica.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('/images/background.png') no-repeat center center fixed;
+  background-size: cover;
 }
 
-body {
-  font-family: 'Helvetica', Arial, sans-serif !important;
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Helvetica;
+/* Shake animation for input field */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Typing indicator */
+@keyframes dots {
+  0% { content: "."; }
+  33% { content: ".."; }
+  66% { content: "..."; }
+}
+
+.dots::after {
+  content: ".";
+  animation: dots 1.5s infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #0ff;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212;
 }

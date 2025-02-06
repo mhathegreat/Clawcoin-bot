@@ -8,15 +8,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <style>
-          {`
-            * {
-              font-family: 'Helvetica', Arial, sans-serif !important;
-            }
-          `}
-        </style>
-      </head>
+      <head />
       <body>{children}</body>
     </html>
   );
