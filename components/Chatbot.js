@@ -110,7 +110,7 @@ export default function Chatbot() {
       </div>
 
       {/* Chatbox Container */}
-      <div className="relative w-full min-w-[90vw] md:min-w-[75vw] lg:min-w-[900px] max-w-[95vw] md:max-w-[90vw] lg:max-w-[1400px] h-[90vh] bg-gray-900 bg-opacity-90 rounded-lg overflow-hidden border-4 border-neonBlue shadow-2xl flex flex-col mt-16">
+      <div className="relative w-full min-w-[90vw] md:min-w-[75vw] lg:min-w-[900px] max-w-[95vw] md:max-w-[90vw] lg:max-w-[1400px] h-[70vh] bg-gray-900 bg-opacity-90 rounded-lg overflow-hidden border-4 border-neonBlue shadow-2xl flex flex-col mt-16">
         
         {/* Chat Messages */}
         <div className="flex-1 overflow-y-auto space-y-4 p-4">
