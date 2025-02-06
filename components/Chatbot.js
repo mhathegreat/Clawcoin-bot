@@ -9,7 +9,7 @@ export default function Chatbot() {
   const [isMounted, setIsMounted] = useState(false);
   const [loading, setLoading] = useState(false);
   const chatEndRef = useRef(null);
-  const inputRef = useRef(null); // Create reference for input field
+  const inputRef = useRef(null); // Reference to the input field
 
   const sendMessage = async () => {
     if (!input.trim()) {
@@ -50,10 +50,12 @@ export default function Chatbot() {
       setLoading(false);
     }
 
-    // Keep focus on input field
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
+    // Keep the input field focused after message send
+    setTimeout(() => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    }, 100); // Timeout ensures focus is applied after re-render
   };
 
   const handleKeyPress = (e) => {
@@ -73,6 +75,11 @@ export default function Chatbot() {
   useEffect(() => {
     if (isMounted) {
       chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+
+      // Keep focus on input field after every new message
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
     }
   }, [messages, isMounted]);
 
