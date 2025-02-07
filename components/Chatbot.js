@@ -18,8 +18,11 @@ export default function Chatbot() {
       return;
     }
 
-    const userMessage = { sender: "user", text: input };
-    setMessages((prevMessages) => [...prevMessages, userMessage]);
+    // Add user message to chat history
+    const userMessage = { role: "user", parts: [{ text: input }] };
+    const updatedHistory = [...messages, userMessage].slice(-10); // Keep last 10 messages
+
+    setMessages(updatedHistory);
     setInput("");
     setLoading(true);
 
@@ -27,7 +30,7 @@ export default function Chatbot() {
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: input }),
+        body: JSON.stringify({ message: input, history: updatedHistory }),
       });
 
       const data = await response.json();
@@ -37,19 +40,15 @@ export default function Chatbot() {
         throw new Error("No reply from server");
       }
 
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { sender: "maru", text: data.reply },
-      ]);
+      // Add MARU's response to chat history
+      setMessages((prevMessages) => [...prevMessages, { role: "model", parts: [{ text: data.reply }] }]);
     } catch (error) {
       console.error("Chatbot error:", error);
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { sender: "maru", text: "Meow... Something went wrong. Try again." },
-      ]);
+      setMessages((prevMessages) => [...prevMessages, { role: "model", parts: [{ text: "Meow... Something went wrong. Try again." }] }]);
       setLoading(false);
     }
 
+    // Keep focus on input after sending
     setTimeout(() => {
       if (inputRef.current) {
         inputRef.current.focus();
@@ -74,7 +73,6 @@ export default function Chatbot() {
   useEffect(() => {
     if (isMounted) {
       chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-
       if (inputRef.current) {
         inputRef.current.focus();
       }
@@ -115,8 +113,8 @@ export default function Chatbot() {
         {/* Chat Messages */}
         <div className="flex-1 overflow-y-auto space-y-4 p-4">
           {messages.map((msg, index) => (
-            <div key={index} className={`flex items-start w-full ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
-              {msg.sender === "user" ? (
+            <div key={index} className={`flex items-start w-full ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+              {msg.role === "user" ? (
                 <img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg"
                   alt="User Avatar" className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-cyan-300 shadow-md" />
               ) : (
@@ -127,11 +125,11 @@ export default function Chatbot() {
               <div className={`p-3 text-white text-sm md:text-lg rounded-xl break-words shadow-lg fade-in ml-2
                 max-w-[80%] md:max-w-[70%] lg:max-w-[60%]`}
                 style={{
-                  backgroundColor: msg.sender === "user" ? "#00aaff" : "#ff1493",
+                  backgroundColor: msg.role === "user" ? "#00aaff" : "#ff1493",
                   fontWeight: "bold",
-                  textAlign: msg.sender === "user" ? "right" : "left",
+                  textAlign: msg.role === "user" ? "right" : "left",
                 }}>
-                {msg.text}
+                {msg.parts[0].text}
               </div>
             </div>
           ))}
@@ -139,7 +137,7 @@ export default function Chatbot() {
           {/* Typing Indicator */}
           {loading && (
             <div className="flex items-center">
-              <img src="https://i.imgur.com/GSzvJM8.png"
+              <img src="https://i.imgur.com/aFGm2NG.jpeg"
                 alt="MARU Avatar" className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-pink-400 shadow-md" />
               <div className="p-3 text-white text-sm md:text-lg rounded-xl bg-pink-500 ml-2">
                 Meow... <span className="dots">.</span>
