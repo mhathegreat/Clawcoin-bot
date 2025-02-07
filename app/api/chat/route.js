@@ -54,13 +54,14 @@ export async function POST(req) {
     // Format the chat input correctly
     const result = await model.generateContent([systemPrompt, `User: ${message}\nMARU:`]);
 
-    if (!result.response) {
-      console.error("❌ Gemini API did not return a response.");
+    // Check if the response is valid
+    if (!result || !result.response || !result.response.candidates || !result.response.candidates[0].content) {
+      console.error("❌ Gemini API returned an invalid response.");
       return new Response(JSON.stringify({ reply: "Meow? Something went wrong with my circuits!" }), { status: 500 });
     }
 
-    // Fix: Ensure we correctly extract the response text
-    const text = await result.response.text();
+    // Fix: Extract response text correctly
+    const text = result.response.candidates[0].content.parts[0].text || "Meow? Something went wrong!";
 
     return new Response(JSON.stringify({ reply: text }), { status: 200 });
   } catch (error) {
