@@ -88,7 +88,7 @@ export default function Chatbot() {
   return (
     <div className="h-screen w-full flex flex-col items-center justify-center bg-cover bg-center px-4"
       style={{
-        backgroundImage: "url('/images/background.png')",
+        backgroundImage: "url('/images/background.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
@@ -125,7 +125,7 @@ export default function Chatbot() {
                 <img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg"
                   alt="User Avatar" className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-cyan-300 shadow-md" />
               ) : (
-                <img src="https://i.imgur.com/aFGm2NG.jpeg"
+                <img src="https://i.ibb.co/7NxkNnTw/5273737601016263300.jpg"
                   alt="MARU Avatar" className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-pink-400 shadow-md" />
               )}
 

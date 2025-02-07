@@ -28,7 +28,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('/images/background.png') no-repeat center center fixed;
+  background: url('/images/background.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 
