@@ -72,7 +72,9 @@ export default function Chatbot() {
 
   useEffect(() => {
     if (isMounted) {
-      chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        chatEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+      }, 100); // Small delay to prevent flickering
       if (inputRef.current) {
         inputRef.current.focus();
       }
@@ -93,22 +95,27 @@ export default function Chatbot() {
       }}>
 
       {/* Navigation Menu */}
-      <div className="absolute top-4 w-full flex justify-between px-6 md:px-12">
-        <h1 className="text-3xl font-bold text-neonBlue">MARUxAI</h1>
+      {/* Navigation Bar */}
+      <div className="navbar">
+        <h1 className="navbar-title">MARUxAI</h1>
         <div className="flex gap-4">
           <a href="https://x.com/maruxai_sol" target="_blank" rel="noopener noreferrer"
-            className="px-4 py-2 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-400 transition">
+            className="nav-button x-button">
             X
           </a>
           <a href="https://maruxai.xyz/" target="_blank" rel="noopener noreferrer"
-            className="px-4 py-2 bg-gray-800 text-white rounded-lg font-semibold hover:bg-gray-700 transition">
+            className="nav-button home-button">
             Home
           </a>
         </div>
       </div>
 
+      {/* Underline Glow Effect */}
+      <div className="nav-underline"></div>
+
+
       {/* Chatbox Container */}
-      <div className="relative w-full min-w-[90vw] md:min-w-[75vw] lg:min-w-[900px] max-w-[95vw] md:max-w-[90vw] lg:max-w-[1400px] h-[70vh] bg-gray-900 bg-opacity-90 rounded-lg overflow-hidden border-4 border-neonBlue shadow-2xl flex flex-col mt-16">
+      <div className="relative w-full min-w-[90vw] md:min-w-[75vw] lg:min-w-[900px] max-w-[95vw] md:max-w-[90vw] lg:max-w-[1400px] h-[70vh] bg-gray-900 bg-opacity-90 rounded-lg overflow-hidden border-4 border-neonBlue shadow-2xl flex flex-col mt-16 chat-container">
         
         {/* Chat Messages */}
         <div className="flex-1 overflow-y-auto space-y-4 p-4">
@@ -122,13 +129,7 @@ export default function Chatbot() {
                   alt="MARU Avatar" className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-pink-400 shadow-md" />
               )}
 
-              <div className={`p-3 text-white text-sm md:text-lg rounded-xl break-words shadow-lg fade-in ml-2
-                max-w-[80%] md:max-w-[70%] lg:max-w-[60%]`}
-                style={{
-                  backgroundColor: msg.role === "user" ? "#00aaff" : "#ff1493",
-                  fontWeight: "bold",
-                  textAlign: msg.role === "user" ? "right" : "left",
-                }}>
+              <div className={`chat-message ${msg.role === "user" ? "user-message" : "bot-message"}`}>
                 {msg.parts[0].text}
               </div>
             </div>
@@ -136,11 +137,16 @@ export default function Chatbot() {
 
           {/* Typing Indicator */}
           {loading && (
-            <div className="flex items-center">
+            <div className="flex items-start w-full">
+              {/* MARU's Avatar */}
               <img src="https://i.imgur.com/aFGm2NG.jpeg"
                 alt="MARU Avatar" className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-pink-400 shadow-md" />
-              <div className="p-3 text-white text-sm md:text-lg rounded-xl bg-pink-500 ml-2">
-                Meow... <span className="dots">.</span>
+
+              {/* Typing Indicator Bubble */}
+              <div className="typing-indicator ml-2">
+                <span className="dot"></span>
+                <span className="dot"></span>
+                <span className="dot"></span>
               </div>
             </div>
           )}
@@ -150,20 +156,21 @@ export default function Chatbot() {
 
         {/* Input Box & Send Button */}
         <div className="flex gap-2 p-4 bg-gray-900 w-full">
-          <input
-            ref={inputRef}
-            className={`p-3 bg-gray-800 text-white border border-neonBlue rounded-lg w-full outline-none focus:ring-2 focus:ring-neonBlue text-sm md:text-lg ${inputShake ? 'shake' : ''}`}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyPress}
-            placeholder="Ask MARU anything..."
-            disabled={loading}
-          />
-          <button className={`p-3 bg-neonBlue rounded-full flex items-center justify-center transition-all ${loading ? "opacity-50 cursor-not-allowed" : "hover:scale-110 transform"}`}
-            onClick={sendMessage}
-            disabled={loading}>
-            <Send size={28} color="#121212" />
-          </button>
+        <input
+          ref={inputRef}
+          className={`chat-input ${inputShake ? 'shake' : ''}`}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={handleKeyPress}
+          placeholder="Ask MARU anything..."
+          disabled={loading}
+        />
+        <button className="send-button"
+          onClick={sendMessage}
+          disabled={loading}>
+          <Send size={28} color="#121212" />
+        </button>
+
         </div>
       </div>
     </div>
