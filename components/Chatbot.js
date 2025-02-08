@@ -177,7 +177,6 @@ export default function Chatbot() {
           disabled={loading}>
           <Send size={28} color="#121212" />
         </button>
-
         </div>
       </div>
     </div>
