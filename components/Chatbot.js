@@ -68,7 +68,14 @@ export default function Chatbot() {
     if (inputRef.current) {
       inputRef.current.focus();
     }
+  
+    if (messages.length === 0) {
+      setMessages([
+        { role: "model", parts: [{ text: "Meow! I am MARUxAI. Ask me anything... if you dare. 😼" }] },
+      ]);
+    }
   }, []);
+  
 
   useEffect(() => {
     if (isMounted) {
