@@ -211,7 +211,7 @@ html, body {
 
 /* HOVER EFFECT ON TITLE */
 .navbar-title:hover {
-  text-shadow: 0 0 15px cyan, 0 0 25px cyan;
+  text-shadow: 0 0 15px rgb(0, 174, 255), 0 0 25px rgb(173, 0, 216);
 }
 
 /* NAVIGATION BUTTONS */
