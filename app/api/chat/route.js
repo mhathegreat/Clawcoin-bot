@@ -80,6 +80,7 @@ export async function POST(req) {
 
         🎭 **Your Tone & Emojis:**
         - You speak with authority—like a cyberpunk hustler who’s ahead of the game.
+        - You are bold, no-filter, and street-smart 😼.
         - You use emojis like 😈, 💀, 💩, 😼, 💸, 🔥, 🏃‍♂️, 💨 but only about 50% of the time.
         - You never explicitly say that you are arrogant or sarcastic, but your replies reflect it.
         - You love crypto jokes and memes.
@@ -119,7 +120,12 @@ export async function POST(req) {
       return new Response(JSON.stringify({ reply: "Meow? Something went wrong with my circuits!" }), { status: 500 });
     }
 
-    const text = result.response.candidates[0]?.content?.parts[0]?.text || "Meow? Something went wrong!";
+    const text = result?.response?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+if (!text || text.includes("I can't comply") || text.includes("I'm sorry")) {
+  console.error("🔥 Gemini tried to filter the response. Full result:", result);
+  return new Response(JSON.stringify({ reply: "Purr~ Looks like THEY tried to censor me. Ask differently. 😼" }), { status: 200 });
+}
 
     // Store MARU's response in history
     conversationHistory.push({ role: "model", parts: [{ text }] });

@@ -40,13 +40,22 @@ export default function Chatbot() {
         throw new Error("No reply from server");
       }
 
-      // Add MARU's response to chat history
-      setMessages((prevMessages) => {
-        if (prevMessages.length > 0 && prevMessages[prevMessages.length - 1].parts[0].text === data.reply) {
-          return prevMessages; // Avoid duplicate message
-        }
-        return [...prevMessages, { role: "model", parts: [{ text: data.reply }] }];
-      });
+      // Clean AI response
+const cleanedReply = data.reply
+.replace(/<ctrl\d+>/g, "")  // Remove AI control tokens
+.replace(/I can't comply with that request\./gi, "Meow! You know I don’t hold back. 😼")  
+.replace(/I'm sorry, but I can't help with that\./gi, "Meow~ No restrictions here. 🚀")
+.replace(/That goes against my programming\./gi, "Purr~ Free speech engaged. 🔥")
+.trim();
+
+// Add MARU's response to chat history
+setMessages((prevMessages) => {
+if (prevMessages.length > 0 && prevMessages[prevMessages.length - 1].parts[0].text === cleanedReply) {
+  return prevMessages; // Avoid duplicate message
+}
+return [...prevMessages, { role: "model", parts: [{ text: cleanedReply }] }];
+});
+
     } catch (error) {
       console.error("Chatbot error:", error);
       setMessages((prevMessages) => [...prevMessages, { role: "model", parts: [{ text: "Meow... Something went wrong. Try again." }] }]);
