@@ -41,7 +41,12 @@ export default function Chatbot() {
       }
 
       // Add MARU's response to chat history
-      setMessages((prevMessages) => [...prevMessages, { role: "model", parts: [{ text: data.reply }] }]);
+      setMessages((prevMessages) => {
+        if (prevMessages.length > 0 && prevMessages[prevMessages.length - 1].parts[0].text === data.reply) {
+          return prevMessages; // Avoid duplicate message
+        }
+        return [...prevMessages, { role: "model", parts: [{ text: data.reply }] }];
+      });
     } catch (error) {
       console.error("Chatbot error:", error);
       setMessages((prevMessages) => [...prevMessages, { role: "model", parts: [{ text: "Meow... Something went wrong. Try again." }] }]);
