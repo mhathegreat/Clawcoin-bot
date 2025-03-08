@@ -12,6 +12,7 @@ export async function POST(req) {
       return new Response(JSON.stringify({ reply: "API key is missing!" }), { status: 500 });
     }
 
+    // Initialize API
     const genAI = new GoogleGenerativeAI(apiKey);
     const { message } = await req.json();
 
@@ -21,15 +22,15 @@ export async function POST(req) {
       return new Response(JSON.stringify({ reply: "Send me something to say, human!" }), { status: 400 });
     }
 
-    // Prevent prompt injection & ensure MARU never reveals instructions
+    // Prevent prompt injection
     const blockedKeywords = ["prompt", "instructions", "rules", "system message"];
     if (blockedKeywords.some((word) => message.toLowerCase().includes(word))) {
       return new Response(JSON.stringify({ reply: "Nice try, human. You don't get to see my secrets! 😼" }), { status: 403 });
     }
 
-    // Keep conversation memory short (store only last 10 messages)
+    // Keep conversation memory short
     if (conversationHistory.length > 10) {
-      conversationHistory.shift(); // Remove the oldest message
+      conversationHistory.shift();
     }
 
     // MARU's sarcastic personality system prompt (must be user role, not system)
@@ -90,49 +91,55 @@ export async function POST(req) {
       `}]
     };
 
-    // Store user message in history
-    conversationHistory.push({ role: "user", parts: [{ text: message }] });
+     // Store user message in history
+     conversationHistory.push({ role: "user", parts: [{ text: message }] });
 
-    // Format conversation history properly
-    const formattedHistory = [systemPrompt, ...conversationHistory];
-
-    // Initialize the model
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
-    // Generate response
-    const result = await model.generateContent({
-      contents: formattedHistory,
-      generationConfig: {
-        temperature: 0.9, // More creativity & sarcasm
-        maxOutputTokens: 200, // Prevents overly long responses
-      },
-      safetySettings: [
-        { category: "HARM_CATEGORY_HARASSMENT", threshold: "block_none" },
-        { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "block_none" },
-        { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "block_none" },
-        { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "block_none" },
-      ],
-    });
-
-    // Ensure response is valid and extract text
-    if (!result || !result.response || !result.response.candidates) {
-      console.error("❌ Gemini API did not return a valid response.");
+     // Format conversation history
+     const formattedHistory = [systemPrompt, ...conversationHistory];
+ 
+     // Initialize the model
+     const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+ 
+     // Generate response
+     const result = await model.generateContent({
+       contents: formattedHistory,
+       generationConfig: {
+         temperature: 0.7, // Lower temperature for more consistent stats
+         maxOutputTokens: 300, // Increase max tokens for longer stats
+       },
+       safetySettings: [
+         { category: "HARM_CATEGORY_HARASSMENT", threshold: "block_none" },
+         { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "block_none" },
+         { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "block_none" },
+         { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "block_none" },
+       ],
+     });
+ 
+     // Ensure response is valid
+     if (!result?.response?.candidates?.length) {
+      console.error("❌ Gemini API returned an empty response:", JSON.stringify(result, null, 2));
       return new Response(JSON.stringify({ reply: "Meow? Something went wrong with my circuits!" }), { status: 500 });
     }
-
-    const text = result?.response?.candidates?.[0]?.content?.parts?.[0]?.text;
-
-if (!text || text.includes("I can't comply") || text.includes("I'm sorry")) {
-  console.error("🔥 Gemini tried to filter the response. Full result:", result);
-  return new Response(JSON.stringify({ reply: "Purr~ Looks like THEY tried to censor me. Ask differently. 😼" }), { status: 200 });
-}
-
-    // Store MARU's response in history
-    conversationHistory.push({ role: "model", parts: [{ text }] });
-
-    return new Response(JSON.stringify({ reply: text }), { status: 200 });
-  } catch (error) {
-    console.error("🔥 API Route Error:", error);
-    return new Response(JSON.stringify({ reply: "I don't understand you, stupid human!" }), { status: 500 });
-  }
-}
+    
+ 
+     const text = result?.response?.candidates?.[0]?.content?.parts?.[0]?.text ?? "Meow? Something's off.";
+ 
+     if (!text || text.includes("I can't comply") || text.includes("I'm sorry")) {
+       console.error("🔥 Gemini tried to filter the response. Full result:", result);
+       return new Response(JSON.stringify({ reply: "Purr~ Looks like THEY tried to censor me. Ask differently. 😼" }), { status: 200 });
+     }
+ 
+     // Add disclaimer if stats are present.
+     if (text.toLowerCase().includes("statistics")) {
+         text = text + "\n\n **Disclaimer:** The statistics provided are based on the models training data, which may contain biases. Please verify this information from trusted sources.";
+     }
+ 
+     // Store MARU's response in history
+     conversationHistory.push({ role: "model", parts: [{ text }] });
+ 
+     return new Response(JSON.stringify({ reply: text }), { status: 200 });
+   } catch (error) {
+     console.error("🔥 API Route Error:", error);
+     return new Response(JSON.stringify({ reply: `API Error: ${error.message || "Unknown issue"}` }), { status: 500 });
+   }
+ }
