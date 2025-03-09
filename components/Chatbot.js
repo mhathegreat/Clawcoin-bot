@@ -48,7 +48,7 @@ const cleanedReply = data.reply
 .replace(/That goes against my programming\./gi, "Purr~ Free speech engaged. 🔥")
 .trim();
 
-// Add MARU's response to chat history
+// Add CLAW's response to chat history
 setMessages((prevMessages) => {
 if (prevMessages.length > 0 && prevMessages[prevMessages.length - 1].parts[0].text === cleanedReply) {
   return prevMessages; // Avoid duplicate message
@@ -85,7 +85,7 @@ return [...prevMessages, { role: "model", parts: [{ text: cleanedReply }] }];
   
     if (messages.length === 0) {
       setMessages([
-        { role: "model", parts: [{ text: "Meow! I am MARUxAI. Ask me anything... if you dare. 😼" }] },
+        { role: "model", parts: [{ text: "Meow! I am CLAW. Ask me anything... if you dare. 😼" }] },
       ]);
     }
   }, []);
@@ -118,7 +118,7 @@ return [...prevMessages, { role: "model", parts: [{ text: cleanedReply }] }];
       {/* Navigation Menu */}
       {/* Navigation Bar */}
       <div className="navbar">
-        <h1 className="navbar-title">MARUxAI</h1>
+        <h1 className="navbar-title">Claw</h1>
         <div className="flex gap-4">
           <a href="https://x.com/maruxai_sol" target="_blank" rel="noopener noreferrer"
             className="nav-button x-button">
@@ -146,8 +146,8 @@ return [...prevMessages, { role: "model", parts: [{ text: cleanedReply }] }];
                 <img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg"
                   alt="User Avatar" className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-cyan-300 shadow-md" />
               ) : (
-                <img src="https://i.ibb.co/7NxkNnTw/5273737601016263300.jpg"
-                  alt="MARU Avatar" className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-pink-400 shadow-md" />
+                <img src="https://i.imgur.com/klR9ba0.jpeg"
+                  alt="CLAW Avatar" className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-pink-400 shadow-md" />
               )}
 
               <div className={`chat-message ${msg.role === "user" ? "user-message" : "bot-message"}`}>
@@ -159,9 +159,9 @@ return [...prevMessages, { role: "model", parts: [{ text: cleanedReply }] }];
           {/* Typing Indicator */}
           {loading && (
             <div className="flex items-start w-full">
-              {/* MARU's Avatar */}
+              {/* CLAW's Avatar */}
               <img src="https://i.imgur.com/aFGm2NG.jpeg"
-                alt="MARU Avatar" className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-pink-400 shadow-md" />
+                alt="CLAW Avatar" className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-pink-400 shadow-md" />
 
               {/* Typing Indicator Bubble */}
               <div className="typing-indicator ml-2">
@@ -183,7 +183,7 @@ return [...prevMessages, { role: "model", parts: [{ text: cleanedReply }] }];
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyPress}
-          placeholder="Ask MARU anything..."
+          placeholder="Ask CLAW anything..."
           disabled={loading}
         />
         <button className="send-button"

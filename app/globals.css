@@ -70,7 +70,7 @@ html, body {
   width: fit-content;
   max-width: 60%;
   padding: 12px 16px;
-  background: rgba(255, 20, 147, 0.8); /* Same as MARU’s messages */
+  background: rgba(255, 20, 147, 0.8); /* Same as CLAW’s messages */
   color: white;
   font-size: 1rem;
   font-weight: bold;
