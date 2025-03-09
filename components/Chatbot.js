@@ -160,7 +160,7 @@ return [...prevMessages, { role: "model", parts: [{ text: cleanedReply }] }];
           {loading && (
             <div className="flex items-start w-full">
               {/* CLAW's Avatar */}
-              <img src="https://i.imgur.com/aFGm2NG.jpeg"
+              <img src="https://i.imgur.com/klR9ba0.jpeg"
                 alt="CLAW Avatar" className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-pink-400 shadow-md" />
 
               {/* Typing Indicator Bubble */}

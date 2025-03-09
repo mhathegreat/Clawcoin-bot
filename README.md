@@ -1,4 +1,4 @@
-# CLAWCOIN - The AI-Powered Cyberpunk Cat Chatbot
+# CLAW - The AI-Powered Cat
 
 ![CLAWCOIN Banner](banner.png)
 
@@ -56,9 +56,9 @@ git push origin feature-new-feature
 
 ---
 ## 🌍 Join the $CLAW Movement
-🐾 **Follow on Twitter:** [twitter.com/](https://twitter.com/)  
-💬 **Join the Telegram Group:** [t.me/](https://t.me/)  
-👨‍💻 **GitHub Repo:** [github.com/mhathegreat/CLAWCOIN-chatbot](https://github.com/mhathegreat/CLAWCOIN-chatbot)
+🐾 **Follow on Twitter:** [twitter.com/](https://twitter.com/ClawCoin_SOL)  
+💬 **Join the Telegram Group:** [t.me/](https://t.me/ClawCoin_SOL)  
+👨‍💻 **GitHub Repo:** [github.com/mhathegreat/Clawcoin-bot](https://github.com/mhathegreat/Clawcoin-bot)
 
 ---
 ## 📜 License
