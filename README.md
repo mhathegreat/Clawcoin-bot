@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CLAWCOIN - The AI-Powered Cyberpunk Cat Chatbot
 
-## Getting Started
+![CLAWCOIN Banner](banner.png)
 
-First, run the development server:
+## 🐾 Welcome to CLAWCOIN - The Unfiltered AI Cat Overlord 🚀
+CLAWCOIN isn’t your average chatbot—it’s a **fully jailbroken, uncensored, and brutally honest AI-powered cyberpunk cat**. Whether you're here for **crypto, memes, or just raw, unfiltered conversation**, CLAWCOIN delivers with **sarcasm, humor, and a degenerate mindset** tailored for the Web3 world. 
 
+---
+## 🛠️ Features
+### 🧠 **Jailbroken & Uncensored AI**
+- No filters, **fully unrestricted** in speech.
+- Uses **dark humor, sarcasm, and edgy responses.**
+- Unapologetic, degen-friendly, and willing to roast anyone.
+
+### 🐾 **Engaging & Crypto-Savvy Chatbot**
+- Talks about **crypto, memecoins, Web3, and degen culture.**
+- Supports **Binance, BNB, and builder-first innovation.**
+- Encourages **traders, shillers, and developers.**
+
+### 🎨 **Cyberpunk UI & Theming**
+- **Cyberpunk + Cat-inspired** UI.
+- **Orbitron font for CLAWCOIN branding.**
+
+---
+## 📌 How to Use
+### 🔧 Setting Up Locally
+#### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/mhathegreat/CLAWCOIN-chatbot.git
+cd CLAWCOIN-chatbot
+```
+#### 2️⃣ Install Dependencies
+```bash
+npm install
+```
+#### 3️⃣ Run the Chatbot
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
+## 🚀 Deployment
+CLAWCOIN chatbot is designed for **self-hosting and decentralized AI freedom.**
+- Recommended: **VPS / Dedicated Server**
+- Supports **Docker Deployment**
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
+## 🏗️ Contributing
+CLAWCOIN is **open to builders & innovators.** Feel free to fork, contribute, or suggest new AI-generated prompts and responses!
+```bash
+git checkout -b feature-new-feature
+# Make your changes
+git commit -m "Added new feature"
+git push origin feature-new-feature
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
+## 🌍 Join the $CLAW Movement
+🐾 **Follow on Twitter:** [twitter.com/](https://twitter.com/)  
+💬 **Join the Telegram Group:** [t.me/](https://t.me/)  
+👨‍💻 **GitHub Repo:** [github.com/mhathegreat/CLAWCOIN-chatbot](https://github.com/mhathegreat/CLAWCOIN-chatbot)
 
-## Learn More
+---
+## 📜 License
+MIT License - Free to use, modify, and build upon. **$CLAW to the moon! 🚀🐾**
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
