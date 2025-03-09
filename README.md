@@ -27,7 +27,7 @@ CLAW isn’t your average chatbot—it’s a **fully jailbroken, uncensored, and
 #### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/mhathegreat/CLAWCOIN-bot.git
-cd CLAWCOIN-chatbot
+cd CLAWCOIN-bot
 ```
 #### 2️⃣ Install Dependencies
 ```bash
