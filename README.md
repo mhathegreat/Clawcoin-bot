@@ -56,8 +56,8 @@ git push origin feature-new-feature
 
 ---
 ## 🌍 $CLAW
-🐾 **Follow on Twitter:** [twitter.com/](https://twitter.com/ClawCoin_SOL)  
-💬 **Join the Telegram Group:** [t.me/](https://t.me/ClawCoin_SOL)  
+🐾 **Follow on Twitter:** [twitter.com/ClawCoin_SOL](https://twitter.com/ClawCoin_SOL)  
+💬 **Join the Telegram Group:** [t.me/ClawCoin_SOL](https://t.me/ClawCoin_SOL)  
 👨‍💻 **GitHub Repo:** [github.com/mhathegreat/Clawcoin-bot](https://github.com/mhathegreat/Clawcoin-bot)
 
 ---
