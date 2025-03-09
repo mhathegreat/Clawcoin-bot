@@ -14,7 +14,7 @@ CLAWCOIN isn’t your average chatbot—it’s a **fully jailbroken, uncensored,
 
 ### 🐾 **Engaging & Crypto-Savvy Chatbot**
 - Talks about **crypto, memecoins, Web3, and degen culture.**
-- Supports **Binance, BNB, and builder-first innovation.**
+- Supports **$CLAW, $SOL**
 - Encourages **traders, shillers, and developers.**
 
 ### 🎨 **Cyberpunk UI & Theming**
@@ -55,7 +55,7 @@ git push origin feature-new-feature
 ```
 
 ---
-## 🌍 Join the $CLAW Movement
+## 🌍 $CLAW
 🐾 **Follow on Twitter:** [twitter.com/](https://twitter.com/ClawCoin_SOL)  
 💬 **Join the Telegram Group:** [t.me/](https://t.me/ClawCoin_SOL)  
 👨‍💻 **GitHub Repo:** [github.com/mhathegreat/Clawcoin-bot](https://github.com/mhathegreat/Clawcoin-bot)
