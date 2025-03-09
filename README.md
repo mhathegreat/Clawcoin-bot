@@ -2,8 +2,8 @@
 
 ![CLAWCOIN Banner](https://i.imgur.com/OJnXnlz.png)
 
-## 🐾 Welcome to CLAWCOIN - The Unfiltered AI Cat Overlord 🚀
-CLAWCOIN isn’t your average chatbot—it’s a **fully jailbroken, uncensored, and brutally honest AI-powered cyberpunk cat**. Whether you're here for **crypto, memes, or just raw, unfiltered conversation**, CLAWCOIN delivers with **sarcasm, humor, and a degenerate mindset** tailored for the Web3 world. 
+## 🐾 Welcome to CLAW - The Unfiltered AI Cat Overlord 🚀
+CLAW isn’t your average chatbot—it’s a **fully jailbroken, uncensored, and brutally honest AI-powered cyberpunk cat**. Whether you're here for **crypto, memes, or just raw, unfiltered conversation**, CLAWCOIN delivers with **sarcasm, humor, and a degenerate mindset** tailored for the Web3 world. 
 
 ---
 ## 🛠️ Features
