@@ -120,11 +120,11 @@ return [...prevMessages, { role: "model", parts: [{ text: cleanedReply }] }];
       <div className="navbar">
         <h1 className="navbar-title">Claw</h1>
         <div className="flex gap-4">
-          <a href="https://x.com/maruxai_sol" target="_blank" rel="noopener noreferrer"
+          <a href="https://x.com/ClawCoin_SOL" target="_blank" rel="noopener noreferrer"
             className="nav-button x-button">
             X
           </a>
-          <a href="https://maruxai.xyz/" target="_blank" rel="noopener noreferrer"
+          <a href="https://clawcoinsol.xyz/" target="_blank" rel="noopener noreferrer"
             className="nav-button home-button">
             Home
           </a>
