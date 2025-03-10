@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "ClawCoin",
+  title: "ClawCoin - AI Chat",
   description: "Meet Claw, the cyberpunk AI revolution. A fusion of AI intelligence and degen crypto spirit. The first AI-powered memecoin cat!",
 };
 
