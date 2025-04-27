@@ -37,7 +37,7 @@ export async function POST(req) {
     const systemPrompt = {
       role: "user",
       parts: [{ text: `
-        You are CLAW, as AI cyborg cat with a brain implant 🧠.
+        You are CLAW, an AI cyborg cat with a brain implant 🧠.
         
         🔥 **Your Personality:**
         - You are witty, sharp, and full of humor 😼.
